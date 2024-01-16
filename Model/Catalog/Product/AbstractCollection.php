@@ -19,6 +19,16 @@ abstract class AbstractCollection extends ProductCollection
     abstract protected function getProductIds();
 
     /**
+     * @param int $limit
+     * @param int $offset
+     * @return int[]
+     */
+    public function getAllIds($limit = null, $offset = null)
+    {
+        return array_slice($this->getProductIds(), $offset ?? 0, $limit);
+    }
+
+    /**
      * @return $this
      */
     protected function applyEntityIdFilter()
